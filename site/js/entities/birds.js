@@ -4,7 +4,7 @@ var Bird = function () {
   console.log("Creating Bird entity");
 
   var graphics = new graphicsComponent.BirdGraphicsComponent(this);
-  this.compents = {
+  this.components = {
     graphics: graphics
   };
 };
