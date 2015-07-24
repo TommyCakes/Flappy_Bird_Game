@@ -95,16 +95,16 @@ var buffer = require('vinyl-buffer');
 
 // JavaScript build task, removes whitespace and concatenates all files
 gulp.task('scripts', function() {
-  return browserify('./js/main.js')
+  return browserify('./site/js/main.js')
     .bundle()
     .pipe(source('app.js'))
     .pipe(buffer())
-    .pipe(gulp.dest('./js'));
+    .pipe(gulp.dest('./site/js'));
 });
 
 // Watch task
 gulp.task('watch', function() {
-  gulp.watch(['./js/**/*.js', '!./js/app.js'], ['scripts']);
+  gulp.watch(['./site/js/**/*.js', '!./site/js/app.js'], ['scripts']);
 });
 
 gulp.task('default', ['scripts', 'watch']);

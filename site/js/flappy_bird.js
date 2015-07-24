@@ -1,8 +1,8 @@
-var graphicsSystem = require('./systems/graphics');
-var bird = require('./entities/bird');
+var graphicsSystem = require('./system/graphics');
+var bird = require('./entities/birds.js');
 
-var FlappyBird = function() {
-  this.entities = [new bird.Bird()];
+var flappyBird = function() {
+  this.entities = [new bird.Bird()];//
   this.graphics = new graphicsSystem.GraphicsSystem(this.entities);
 
 };
