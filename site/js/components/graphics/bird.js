@@ -3,8 +3,19 @@ var BirdGraphicsComponent = function(entity) {
 };
 
 BirdGraphicsComponent.prototype.draw = function(context) {
+    // console.log(this.entity.components.physics.position);
   var path = new Path2D();
+  var position = this.entity.components.physics.position;
 
+      context.save();
+      context.translate(position.x, position.y);
+      context.beginPath();
+      context.arc(0, 0, 0.06, 0, 2 * Math.PI);
+      context.fill();
+      context.closePath();
+      context.restore();
+
+      //Beak outline
       context.beginPath();
       context.fillStyle = "black";
       path.moveTo(175, 50);
@@ -13,7 +24,7 @@ BirdGraphicsComponent.prototype.draw = function(context) {
       path.lineTo(90,15);
       context.fill(path);
       context.closePath();
-
+      //Beak
       context.beginPath();
       context.fillStyle = "orange";
       path.moveTo(175, 50);
@@ -60,31 +71,11 @@ BirdGraphicsComponent.prototype.draw = function(context) {
       context.closePath();
 
       context.beginPath();
-        context.fillStyle = "grey";
+      context.fillStyle = "grey";
       context.translate(210, 60);
       context.arc(00, 90, 40, 61, 2 * Math.PI);
       context.fill();
       context.closePath();
-
-
-
-      // context.beginPath();
-      // context.fillStyle = "red";
-      // context.arc(250, 150, 100, 10, 100 );
-      // context.fill();
-      // context.closePath();
-      //
-      // context.beginPath();
-      // context.fillStyle = "white";
-      // context.arc(250, 150, 60, 10, 100 );
-      // context.fill();
-      // context.closePath();
-      //
-      // context.beginPath();
-      // context.fillStyle = "red";
-      // context.arc(250, 150, 55, 10, 100 );
-      // context.fill();
-      // context.closePath();
 
 
       context.beginPath();

@@ -48,4 +48,4 @@ this.context.restore();
 // };
 };
 
-// exports.GraphicsSystem = GraphicsSystem;
+exports.GraphicsSystem = GraphicsSystem;
