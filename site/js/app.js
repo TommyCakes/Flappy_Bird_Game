@@ -16,75 +16,75 @@ BirdGraphicsComponent.prototype.draw = function(context) {
       context.closePath();
       context.restore();
 
-      //Beak outline
-      context.beginPath();
-      context.fillStyle = "black";
-      path.moveTo(175, 50);
-      path.moveTo(175,52);
-      path.lineTo(92,75);
-      path.lineTo(90,15);
-      context.fill(path);
-      context.closePath();
-      //Beak
-      context.beginPath();
-      context.fillStyle = "orange";
-      path.moveTo(175, 50);
-      path.moveTo(175,52);
-      path.lineTo(90,75);
-      path.lineTo(90,15);
-      context.fill(path);
-      context.closePath();
-      //Shadow of head
-      context.beginPath();
-      context.fillStyle = "#bb0";
-      context.arc(95, 60, 54, 0, 2 * Math.PI);
-      context.fill();
-      context.closePath();
-      //Head
-      context.beginPath();
-      context.fillStyle = "#ff1";
-      context.arc(100, 60, 50, 0, 2 * Math.PI);
-      context.fill();
-      context.closePath();
-      //Body Shadow
-      context.beginPath();
-      context.fillStyle = "#bb0";
-      context.arc(95, 170, 62, 4, 12 * Math.PI);
-      context.fill();
-      context.closePath();
-      //Body
-      context.beginPath();
-      context.fillStyle = "#ff1";
-      context.arc(100, 170, 60, 4, 12 * Math.PI);
-      context.fill();
-      context.closePath();
-      //Eye
-      context.beginPath();
-      context.fillStyle = "white";
-      context.arc(100, 40, 12, 0, 2 * Math.PI);
-      context.fill();
-      context.closePath();
-      //Eyeball
-      context.beginPath();
-      context.fillStyle = "lightBlue";
-      context.arc(100, 44, 7, 8, 2 * Math.PI);
-      context.fill();
-      context.closePath();
-
-      context.beginPath();
-      context.fillStyle = "grey";
-      context.translate(210, 60);
-      context.arc(00, 90, 40, 61, 2 * Math.PI);
-      context.fill();
-      context.closePath();
-
-
-      context.beginPath();
-      path.moveTo(175, 50);
-      path.moveTo(175,52);
-      path.lineTo(190,75);
-      path.lineTo(190,15);
-      context.closePath();
+      // //Beak outline
+      // context.beginPath();
+      // context.fillStyle = "black";
+      // path.moveTo(175, 50);
+      // path.moveTo(175,52);
+      // path.lineTo(92,75);
+      // path.lineTo(90,15);
+      // context.fill(path);
+      // context.closePath();
+      // //Beak
+      // context.beginPath();
+      // context.fillStyle = "orange";
+      // path.moveTo(175, 50);
+      // path.moveTo(175,52);
+      // path.lineTo(90,75);
+      // path.lineTo(90,15);
+      // context.fill(path);
+      // context.closePath();
+      // //Shadow of head
+      // context.beginPath();
+      // context.fillStyle = "#bb0";
+      // context.arc(95, 60, 54, 0, 2 * Math.PI);
+      // context.fill();
+      // context.closePath();
+      // //Head
+      // context.beginPath();
+      // context.fillStyle = "#ff1";
+      // context.arc(100, 60, 50, 0, 2 * Math.PI);
+      // context.fill();
+      // context.closePath();
+      // //Body Shadow
+      // context.beginPath();
+      // context.fillStyle = "#bb0";
+      // context.arc(95, 170, 62, 4, 12 * Math.PI);
+      // context.fill();
+      // context.closePath();
+      // //Body
+      // context.beginPath();
+      // context.fillStyle = "#ff1";
+      // context.arc(100, 170, 60, 4, 12 * Math.PI);
+      // context.fill();
+      // context.closePath();
+      // //Eye
+      // context.beginPath();
+      // context.fillStyle = "white";
+      // context.arc(100, 40, 12, 0, 2 * Math.PI);
+      // context.fill();
+      // context.closePath();
+      // //Eyeball
+      // context.beginPath();
+      // context.fillStyle = "lightBlue";
+      // context.arc(100, 44, 7, 8, 2 * Math.PI);
+      // context.fill();
+      // context.closePath();
+      //
+      // context.beginPath();
+      // context.fillStyle = "grey";
+      // context.translate(210, 60);
+      // context.arc(00, 90, 40, 61, 2 * Math.PI);
+      // context.fill();
+      // context.closePath();
+      //
+      //
+      // context.beginPath();
+      // path.moveTo(175, 50);
+      // path.moveTo(175,52);
+      // path.lineTo(190,75);
+      // path.lineTo(190,15);
+      // context.closePath();
 
   // context.fillRect(255,255,0);
 
@@ -101,19 +101,26 @@ var PipeGraphicsComponent = function(entity){
 
 PipeGraphicsComponent.prototype.draw = function(context) {
   // console.log(this.entity.components.physics.position);
-
   var path = new Path2D();
   var position = this.entity.components.physics.position;
 
   context.save();
-  context.translate(position.x, position.y);
+  context.translate(position.y, position.x);
+  context.translate(0.9 ,-0.1);
   context.beginPath();
-  context.fillRect(0, 0, 100, 60);
+  context.rect(0, 0, -0.2, 0.4 );
   context.fill();
   context.closePath();
   context.restore();
-  console.log("Pipe!");
-  console.log(context);
+  // console.log(context);
+  context.save();
+  context.translate(position.y, position.x);
+  context.translate(0.9 ,0.6);
+  context.beginPath();
+  context.rect(0, 0, -0.2, 0.4 );
+  context.fill();
+  context.closePath();
+  context.restore();
 };
 exports.PipeGraphicsComponent = PipeGraphicsComponent;
 
@@ -171,7 +178,7 @@ var graphicsComponent = require('../components/graphics/pipe');
 var physicsComponent = require('../components/physics/physics')
 
 var Pipe = function() {
-  console.log("Creating a pipe!");
+  // console.log("Creating a pipe!");
   var physics = new physicsComponent.PhysicsComponent(this);
   physics.position.y = 0.1;
   physics.acceleration.y = -0.2; // Change to 2
@@ -189,29 +196,30 @@ exports.Pipe = Pipe;
 var graphicsSystem = require('./system/graphics');
 var physicsSystem = require('./system/physics');
 var inputSystem = require('./system/input');
+var pipeSystem = require('./system/pipes');
 
 var bird = require('./entities/birds.js');
 var pipe = require('./entities/pipe.js');
 
 var FlappyBird = function() {
-  this.entities = [new bird.Bird(), new pipe.Pipe()] 
+  this.entities = [new bird.Bird(), new pipe.Pipe()]
 
   this.graphics = new graphicsSystem.GraphicsSystem(this.entities);
   this.physics = new physicsSystem.PhysicsSystem(this.entities);
   this.inputs = new inputSystem.InputSystem(this.entities);
-  // this.pipes = new pipeSystem.PipeSystem(this.entities);
+  this.pipes = new pipeSystem.PipeSystem(this.entities);
 };
 
 FlappyBird.prototype.run = function() {
   this.graphics.run();
   this.physics.run();
   this.inputs.run();
-  // this.pipes.run();
+  this.pipes.run();
 };
 
 exports.FlappyBird = FlappyBird;
 
-},{"./entities/birds.js":4,"./entities/pipe.js":5,"./system/graphics":8,"./system/input":9,"./system/physics":10}],7:[function(require,module,exports){
+},{"./entities/birds.js":4,"./entities/pipe.js":5,"./system/graphics":8,"./system/input":9,"./system/physics":10,"./system/pipes":11}],7:[function(require,module,exports){
 var flappyBird = require('./flappy_bird');
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -324,4 +332,39 @@ PhysicsSystem.prototype.tick = function () {
 
 exports.PhysicsSystem = PhysicsSystem;
 
-},{}]},{},[7]);
+},{}],11:[function(require,module,exports){
+// var pipe = require('../entities/pipe');
+//
+// var PipeSystem = function(entities) {
+//   this.entities = entities;
+// };
+//
+// PipeSystem.prototype.run = function () {
+//   // this.tick();
+//
+//   window.setInterval(this.tick.bind(this), 2000);
+// };
+//
+// exports.PipeSystem = PipeSystem;
+
+
+var pipe = require('../entities/pipe');
+
+var PipeSystem = function(entities) {
+  this.entities = entities;
+};
+
+PipeSystem.prototype.run = function() {
+  this.tick();
+
+  // Run the update loop
+  window.setInterval(this.tick.bind(this), 2000);
+};
+
+PipeSystem.prototype.tick = function() {
+  this.entities.push(new pipe.Pipe(0.1));
+};
+
+exports.PipeSystem = PipeSystem;
+
+},{"../entities/pipe":5}]},{},[7]);

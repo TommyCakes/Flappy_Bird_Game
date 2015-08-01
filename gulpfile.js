@@ -86,19 +86,20 @@
 //
 //
 // //!!git subtree push --prefix build origin gh-pages
-// // Add just teh build to gh-pages!!
+// // Add just the build to gh-pages!!
 var gulp = require('gulp');
 
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
+var util = require('gulp-util');
 
-// JavaScript build task, removes whitespace and concatenates all files
+//JavaScript build task, removes whitespace and concatenates all files
 gulp.task('scripts', function() {
   return browserify('./site/js/main.js')
-    .bundle()
-    .pipe(source('app.js'))
-    .pipe(buffer())
+    .bundle()//.on('error', util.log)//             //If error happens run .on('error', util.log)
+    .pipe(source('app.js').on('error', util.log))
+    .pipe(buffer().on('error', util.log))
     .pipe(gulp.dest('./site/js'));
 });
 
